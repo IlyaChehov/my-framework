@@ -1,0 +1,16 @@
+{
+    "name": "ilya/www",
+    "autoload": {
+        "psr-4": {
+            "My\\Framework\\Core\\": "core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ilya Chehov"
+        }
+    ],
+    "require": {
+        "php": ">=8.0"
+    }
+}
