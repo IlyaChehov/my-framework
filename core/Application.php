@@ -4,9 +4,9 @@ namespace My\Framework\Core;
 
 class Application
 {
-    public Request $request;
-    public Response $response;
-    public Router $router;
+    private Request $request;
+    private Response $response;
+    private Router $router;
     private static Application $app;
 
     public function __construct(string $uri = null)
@@ -26,5 +26,10 @@ class Application
     public function run(): void
     {
         echo $this->router->dispatch();
+    }
+
+    public function router(): Router
+    {
+        return $this->router;
     }
 }

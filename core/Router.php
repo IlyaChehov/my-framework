@@ -38,7 +38,7 @@ class Router
         return $this->add($path, $action, 'POST');
     }
 
-    public function matchRoute(string $path): mixed
+    private function matchRoute(string $path): mixed
     {
         foreach ($this->routers as $router) {
             if (
@@ -64,7 +64,7 @@ class Router
         $route = $this->matchRoute($path);
 
         if ($route === false) {
-            $this->response->setResponseCode(404);
+            $this->response->setResponseCode();
             die('Route not found');
         }
 
