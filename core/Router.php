@@ -2,6 +2,8 @@
 
 namespace My\Framework\Core;
 
+use mysql_xdevapi\Exception;
+
 class Router
 {
     private array $routers = [];

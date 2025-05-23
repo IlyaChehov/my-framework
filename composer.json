@@ -2,8 +2,13 @@
     "name": "ilya/www",
     "autoload": {
         "psr-4": {
-            "My\\Framework\\Core\\": "core/"
-        }
+            "My\\Framework\\Core\\": "core/",
+            "My\\Framework\\App\\": "app/"
+        },
+        "files": [
+            "config/config.php",
+            "helpers/helpers.php"
+        ]
     },
     "authors": [
         {

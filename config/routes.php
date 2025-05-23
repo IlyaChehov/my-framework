@@ -1,13 +1,7 @@
 <?php
 
-$app->router()->get('/', function() {
-    echo 'main';
-});
+use My\Framework\Core\Router;
 
-$app->router()->get('/post', function() {
-    echo 'post';
-});
-
-$app->router()->get('/posts/(?P<slug>[a-z0-9-]+)/?', function() {
-    echo 'posts';
-});
+return function (Router $router) {
+    $router->get('/', [\My\Framework\App\Controllers\HomeController::class, 'index']);
+};

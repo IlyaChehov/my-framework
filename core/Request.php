@@ -27,7 +27,8 @@ class Request
 
     public function getInputValue(string $key, mixed $default = null): mixed
     {
-        return $_GET[$key] ?? $_POST[$key] ?? $default;
+        $value = $_GET[$key] ?? $_POST[$key] ?? $default;
+        return trim($value);
     }
 
     public function getAllFields(array $validFields): array
@@ -38,9 +39,11 @@ class Request
     private function removeInvalidFields(array $validFields): array
     {
         $all = array_merge($_GET, $_POST);
-        return array_filter($all, function ($field) use ($validFields) {
+        $fieldsFiltered = array_filter($all, function ($field) use ($validFields) {
             return in_array($field, $validFields);
         }, ARRAY_FILTER_USE_KEY);
+
+        return array_map(fn($el) => trim($el), $fieldsFiltered);
     }
 
     public function getPath(): string

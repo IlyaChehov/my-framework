@@ -7,6 +7,8 @@ class Application
     private Request $request;
     private Response $response;
     private Router $router;
+
+    private View $view;
     private static Application $app;
 
     public function __construct(string $uri = null)
@@ -16,6 +18,7 @@ class Application
         $this->request = new Request($uri);
         $this->response = new Response();
         $this->router = new Router($this->request, $this->response);
+        $this->view = new View('default');
     }
 
     public static function getApp(): Application
@@ -28,8 +31,13 @@ class Application
         echo $this->router->dispatch();
     }
 
-    public function router(): Router
+    public function getRouter(): Router
     {
         return $this->router;
+    }
+
+    public function getView(): View
+    {
+        return $this->view;
     }
 }
