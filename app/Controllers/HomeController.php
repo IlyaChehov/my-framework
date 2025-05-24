@@ -2,15 +2,12 @@
 
 namespace My\Framework\App\Controllers;
 
+use My\Framework\Core\Application;
+
 class HomeController
 {
-    public function index(): ?string
+    public function index ()
     {
-        return view()->render('index', ['pageTitle' => 'Main | Test', 'text' => 'main']);
-    }
 
-    public function contacts(): ?string
-    {
-        return view()->render('contacts', ['pageTitle' => 'Contacts | Test', 'text' => 'contacts'], 'test');
     }
 }

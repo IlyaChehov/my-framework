@@ -2,6 +2,8 @@
 
 namespace My\Framework\Core;
 
+use JetBrains\PhpStorm\NoReturn;
+
 class Application
 {
     private Request $request;
@@ -39,5 +41,12 @@ class Application
     public function getView(): View
     {
         return $this->view;
+    }
+
+    #[NoReturn] public function abort(int $code = 404, string $errorMessage = '', string|false $layout = null): void
+    {
+        $this->response->setResponseCode($code);
+        $this->view->render("error/{$code}", ['message' => $errorMessage], $layout);
+        die;
     }
 }

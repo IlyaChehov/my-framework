@@ -7,11 +7,6 @@ function app(): \My\Framework\Core\Application
     return \My\Framework\Core\Application::getApp();
 }
 
-function view(): \My\Framework\Core\View
-{
-    return app()->getView();
-}
-
 function dump(array|string $data): void
 {
     echo '<pre>';
@@ -19,7 +14,7 @@ function dump(array|string $data): void
     echo '</pre>';
 }
 
-function dumpDie(array|string $data): void
+#[NoReturn] function dumpDie(array|string $data): void
 {
     dump($data);
     die;
