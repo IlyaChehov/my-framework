@@ -25,7 +25,12 @@ class Request
         return $this->getMethod() === 'POST';
     }
 
-    public function getInputValue(string $key, mixed $default = null): mixed
+    public function isAjax(): bool
+    {
+        return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
+    }
+
+    public function getInputValue(string $key, mixed $default = null): string
     {
         $value = $_GET[$key] ?? $_POST[$key] ?? $default;
         return trim($value);

@@ -48,9 +48,9 @@ class Router
                 &&
                 in_array($this->request->getMethod(), $router['method'])
             ) {
-                foreach ($matches as $k => $v) {
-                    if (is_string($k)) {
-                        $this->params[$k] = $v;
+                foreach ($matches as $key => $value) {
+                    if (is_string($key)) {
+                        $this->params[$key] = $value;
                     }
                 }
                 return $router;

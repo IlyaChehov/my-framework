@@ -15,24 +15,24 @@ class View
     public function render(string $content, array $data = [], $layout = null)
     {
         extract($data);
-        $contentFileName = DIR_VIEW . "/{$content}.php";
+        $contentFilePath = DIR_VIEW . "/{$content}.php";
 
-        if (!file_exists($contentFileName)) {
+        if (!file_exists($contentFilePath)) {
             return 'Not file View';
         }
 
         ob_start();
-        require $contentFileName;
+        require $contentFilePath;
         $this->content = ob_get_clean();
 
         $layout = $layout ?? $this->layout;
-        $layoutFileName = DIR_VIEW . "/layouts/{$layout}.php";
+        $layoutFilePath = DIR_VIEW . "/layouts/{$layout}.php";
 
-        if (!file_exists($layoutFileName)) {
+        if (!file_exists($layoutFilePath)) {
             return 'Not file Layout';
         }
 
-        require_once $layoutFileName;
+        require_once $layoutFilePath;
     }
 
     public function getContent(): string
